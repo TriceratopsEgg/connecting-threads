@@ -1,20 +1,22 @@
 <script lang='ts'>    
     import { Label, Button, Radio, Chevron, Dropdown, Helper } from 'flowbite-svelte';
     import NumericalInput from '../../Atoms/NumericalInput.svelte';
-	import { weavingPatternStore, weavingStepsStore } from '../../../stores/weavingPatternStore';
+	import { weavingPatternStore } from '../../../stores/weavingPatternStore';
 	import TieUpRepresentation from '../../Molecules/TieUpRepresentation.svelte';
 	import { TieUpTypes } from '../../../lib/weaving';
+	import StepperButtons from '../../Molecules/StepperButtons.svelte';
 
     let shaftCount = 4;
     let treadleCount = 4;
     let tieUpPattern: TieUpTypes = TieUpTypes.Default;
 
     function moveNextStep() {
-        weavingPatternStore.set({
-            shaftCount: shaftCount,
-            tieUpPattern: tieUpPattern,
+        weavingPatternStore.update((store) => {
+            store.shaftCount = shaftCount;
+            store.treadleCount = treadleCount;
+            store.tieUpPattern = tieUpPattern;
+            return store;
         });
-        weavingStepsStore.set({ currentStep: 2 });
     }
 </script>
 
@@ -42,7 +44,5 @@
         <TieUpRepresentation bind:shaftCount={shaftCount} bind:treadleCount={treadleCount} bind:tieUpPattern={tieUpPattern} printLogs={true}  />
     </div>
 
-    <Button on:click={moveNextStep}>
-        Next Step
-    </Button>
+    <StepperButtons additionalLogic={moveNextStep} />
 </div>
