@@ -1,0 +1,17 @@
+:root{
+    --theme-colour-primary: #9965f4;
+    --background-colour-neutral: #f7f7f7;
+    --default-background-colour: #fff;
+}
+
+.dark{
+    --background-colour-neutral: #e5e5e5;
+    --default-background-colour: #1f2937;
+}
+
+.input-wrapper{
+    display: flex;
+    flex-direction: column-reverse;
+    max-width: var(--width-max, 20rem);
+    /* background-color: var(--theme-colour-primary); */
+}
