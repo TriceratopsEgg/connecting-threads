@@ -1,7 +1,8 @@
 import { writable } from "svelte/store";
 
 export const weavingPatternStore = writable<{
-    numberOfShafts?: number,
+    shaftCount?: number,
+    treadleCount?: number,
     tieUpPattern?: string,
     numberOfWarpThreads?: number,
     numberOfWeftThreads?: number,
@@ -10,7 +11,8 @@ export const weavingPatternStore = writable<{
     warpColourPattern?: [],
     weftColourPattern?: [],
 }>({
-    numberOfShafts: undefined,
+    shaftCount: undefined,
+    treadleCount: undefined,
     tieUpPattern: undefined,
     numberOfWarpThreads: undefined,
     numberOfWeftThreads: undefined,
