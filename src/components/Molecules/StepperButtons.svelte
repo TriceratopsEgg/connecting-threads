@@ -39,3 +39,5 @@
         {currentStep === maxSteps? "Finish" : "Next Step"}
     </Button>
 </div>
+
+<!-- Styling To Do: Make buttons go to either side | Maybe a divider or something? | Next always in the same location -->
