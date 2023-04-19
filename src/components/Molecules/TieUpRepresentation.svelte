@@ -21,13 +21,13 @@
 				for (let j = 0; j < treadleCount; j++) {
 					let comparison = shaftCount - i - midPoint;
 					if (j - comparison >= shaftCount) {
-						tieUpRow = [...tieUpRow, tieUpPattern === TieUpTypes.Default ? false : true];
+						tieUpRow = [...tieUpRow, tieUpPattern === TieUpTypes.Default ? true : false];
 					} else {
 						tieUpRow = [
 							...tieUpRow,
 							tieUpPattern === TieUpTypes.Default
-								? j < comparison || j - comparison >= midPoint
-								: !(j < comparison || j - comparison >= midPoint)
+								? !(j < comparison || j - comparison >= midPoint)
+								: j < comparison || j - comparison >= midPoint
 						];
 					}
 				}
