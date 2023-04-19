@@ -6,9 +6,15 @@
 	import { TieUpTypes } from '../../../lib/weaving';
 	import StepperButtons from '../../Molecules/StepperButtons.svelte';
 
-	let shaftCount = 4;
-	let treadleCount = 4;
-	let tieUpPattern: TieUpTypes = TieUpTypes.Default;
+    let shaftCount: number;
+    let treadleCount: number;
+    let tieUpPattern: TieUpTypes;
+
+    weavingPatternStore.subscribe((store) => {
+        shaftCount = store.shaftCount ?? 4;
+        treadleCount = store.treadleCount ?? 4;
+        tieUpPattern = store.tieUpPattern ?? TieUpTypes.Default;
+    });
 
 	function moveNextStep() {
 		weavingPatternStore.update((store) => {

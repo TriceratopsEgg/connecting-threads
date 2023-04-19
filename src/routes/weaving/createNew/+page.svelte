@@ -3,6 +3,7 @@
 	import ShaftsAndTieUp from '../../../components/Weaving/CreateWizard/ShaftsAndTieUp.svelte';
 	import Warp from '../../../components/Weaving/CreateWizard/Warp.svelte';
 	import { stepsStore } from '../../../stores/generalStore';
+	import Weft from '../../../components/Weaving/CreateWizard/Weft.svelte';
     let wer = [
         { text: 'Shafts and Tie-up' },
         { text: 'Warp' },
@@ -20,7 +21,7 @@
         currentStep: 1,
         maxSteps: steps.length,
     });
-    
+
 </script>
 
 <div>
@@ -30,5 +31,7 @@
         <ShaftsAndTieUp></ShaftsAndTieUp>
     {:else if currentStep == 2}
         <Warp></Warp>
+    {:else if currentStep == 3}
+        <Weft></Weft>
     {/if}
 </div>

@@ -1,15 +1,16 @@
+import type { TieUpTypes } from "$lib/weaving";
 import { writable } from "svelte/store";
 
 export interface WeavingPatterStoreInterface {
     shaftCount?: number,
     treadleCount?: number,
-    tieUpPattern?: string,
+    tieUpPattern?: TieUpTypes,
     warpThreadCount?: number,
     weftThreadCount?: number,
     repeatingWarpColours?: boolean,
     repeatingWeftColours?: boolean,
-    warpColourPattern?: [],
-    weftColourPattern?: [],
+    warpColourPalette?: string[],
+    weftColourPalette?: string[],
 }
 
 export const weavingPatternStore = writable<WeavingPatterStoreInterface>({
@@ -20,6 +21,6 @@ export const weavingPatternStore = writable<WeavingPatterStoreInterface>({
     weftThreadCount: undefined,
     repeatingWarpColours: undefined,
     repeatingWeftColours: undefined,
-    warpColourPattern: [],
-    weftColourPattern: [],
+    warpColourPalette: [],
+    weftColourPalette: [],
 });

@@ -39,6 +39,7 @@
 		"firebase": "^9.19.1",
 		"flowbite": "^1.6.5",
 		"flowbite-svelte": "^0.34.9",
+		"svelte-awesome-color-picker": "^2.4.1",
 		"svelte-heros-v2": "^0.4.2",
 		"svelte-step-wizard": "^0.0.2",
 		"svelte-steps": "^2.4.1"

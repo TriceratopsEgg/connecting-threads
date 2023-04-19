@@ -2,13 +2,9 @@
 	import { TieUpTypes } from '../../lib/weaving';
 	import Input from '../Atoms/Input.svelte';
 
-	export let shaftCount: number;
-	export let treadleCount: number;
-	export let tieUpPattern: TieUpTypes;
-	export let printLogs = false;
-	if (printLogs) {
-		console.log(tieUpPattern);
-	}
+    export let shaftCount: number;
+    export let treadleCount: number;
+    export let tieUpPattern: TieUpTypes;
 
 	let tieUpDraft: boolean[][] = [];
 
