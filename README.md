@@ -1,22 +1,20 @@
-# create-svelte
-
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
-
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Steps to run the project:
+1. Install dependencies with `npm install`
+2. Make sure your .env file is in place in the root of the solution with the following keys:
+PUBLIC_apiKey=
+PUBLIC_authDomain=
+PUBLIC_projectId=
+PUBLIC_storageBucket=
+PUBLIC_messagingSenderId=
+PUBLIC_appId=
+PUBLIC_measurementId=
+
+P.S. Currently authentication is not being enforced since this is still early days, so the above keys will only be ABSOLUTELY necessary if you want to check out the login and registering flows
+
+3. Start a development server:
 
 ```bash
 npm run dev
