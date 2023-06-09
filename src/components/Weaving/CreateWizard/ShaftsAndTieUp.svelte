@@ -65,7 +65,7 @@
 			</li>
 		</Dropdown>
 		<Label for="input-group-1" class="block my-4">Selected tie up pattern: {tieUpPattern}</Label>
-		<TieUpRepresentation bind:shaftCount bind:treadleCount bind:tieUpPattern printLogs={true} />
+		<TieUpRepresentation bind:shaftCount bind:treadleCount bind:tieUpPattern />
 	</div>
 
 	<StepperButtons additionalLogic={moveNextStep} />

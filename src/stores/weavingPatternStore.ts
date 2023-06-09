@@ -9,8 +9,10 @@ export interface WeavingPatterStoreInterface {
     weftThreadCount?: number,
     repeatingWarpColours?: boolean,
     repeatingWeftColours?: boolean,
-    warpColourPalette?: string[],
-    weftColourPalette?: string[],
+    warpColorPalette?: string[],
+    weftColorPalette?: string[],
+    warpColorOrder?: string[],
+    weftColorOrder?: string[],
 }
 
 export const weavingPatternStore = writable<WeavingPatterStoreInterface>({
@@ -21,6 +23,8 @@ export const weavingPatternStore = writable<WeavingPatterStoreInterface>({
     weftThreadCount: undefined,
     repeatingWarpColours: undefined,
     repeatingWeftColours: undefined,
-    warpColourPalette: [],
-    weftColourPalette: [],
+    warpColorPalette: [],
+    weftColorPalette: [],
+    warpColorOrder: [],
+    weftColorOrder: [],
 });

@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { TieUpTypes } from '../../lib/weaving';
-	import Input from '../Atoms/Input.svelte';
 
     export let shaftCount: number;
     export let treadleCount: number;

@@ -4,14 +4,17 @@
 	import { weavingPatternStore } from '../../../stores/weavingPatternStore';
 	import StepperButtons from '../../Molecules/StepperButtons.svelte';
 	import PaletteBuilder from '../../Molecules/PaletteBuilder.svelte';
+	import ThreadsVisualizer from '../../Molecules/ThreadsVisualizer.svelte';
 
-    let warpThreadCount: number;
+    let weftThreadCount: number;
     let colorPalette: string[] = ["#FFFFFF"];
+    let colorOrder: string[];
 
     function moveNextStep() {
         weavingPatternStore.update((store) => {
-            store.warpThreadCount = warpThreadCount;
-            store.warpColourPalette = colorPalette;
+            store.weftThreadCount = weftThreadCount;
+            store.weftColorPalette = colorPalette;
+            store.weftColorOrder = colorOrder;
             return store;
         });
     }
@@ -19,7 +22,8 @@
 </script>
 
 <div class="">
-    <NumericalInput labelValue="Amount of warp threads" bind:inputValue={warpThreadCount}></NumericalInput>
-    <PaletteBuilder label="Warp Color Palette" bind:colorPalette={colorPalette}></PaletteBuilder>
+    <NumericalInput labelValue="Amount of weft threads" bind:inputValue={weftThreadCount}></NumericalInput>
+    <PaletteBuilder label="Weft Color Palette" bind:colorPalette={colorPalette}></PaletteBuilder>
+    <ThreadsVisualizer threadCount={weftThreadCount} colorPalette={colorPalette} bind:colorOrder={colorOrder}></ThreadsVisualizer>
     <StepperButtons additionalLogic={moveNextStep} />
 </div>
