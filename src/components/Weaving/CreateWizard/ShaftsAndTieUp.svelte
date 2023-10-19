@@ -11,9 +11,9 @@
     let tieUpPattern: TieUpTypes;
 
     weavingPatternStore.subscribe((store) => {
-        shaftCount = store.shaftCount ?? 4;
-        treadleCount = store.treadleCount ?? 4;
-        tieUpPattern = store.tieUpPattern ?? TieUpTypes.Default;
+        shaftCount = store.shaftCount;
+        treadleCount = store.treadleCount;
+        tieUpPattern = store.tieUpPattern;
     });
 
 	function moveNextStep() {
@@ -68,7 +68,7 @@
 		<TieUpRepresentation bind:shaftCount bind:treadleCount bind:tieUpPattern />
 	</div>
 
-	<StepperButtons additionalLogic={moveNextStep} />
+	<StepperButtons on:move={moveNextStep} />
 </section>
 
 <style>

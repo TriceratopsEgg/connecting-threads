@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { Button } from "flowbite-svelte";
 	import { stepsStore, type StepsStoreInterface } from "../../stores/generalStore";
-
-    export function additionalLogic(){};
+    import { createEventDispatcher } from 'svelte';
 
     let currentStep = 1;
     let maxSteps = 1;
@@ -11,12 +10,14 @@
         maxSteps = store.maxSteps;
     });
 
+    const dispatch = createEventDispatcher();
+
     function moveNextStep() {
         stepsStore.update((step: StepsStoreInterface) => {
             step.currentStep = step.currentStep + 1;
             return step;
         });
-        additionalLogic();
+        dispatch('move', {});
     }
 
     function moveBackStep() {
@@ -24,6 +25,7 @@
             step.currentStep = step.currentStep - 1;
             return step;
         });
+        dispatch('move', {});
     }
 
 </script>

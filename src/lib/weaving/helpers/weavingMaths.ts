@@ -11,3 +11,17 @@ export function RepeatColorPattern(
     }
     return colorOrder;
 }
+
+export function RepeatThreadOrder(
+    threadCount: number,
+    basePattern: number[],
+): number[] {
+    let threadOrder: number[] = [];
+    for(let i = 0; i < threadCount / basePattern.length; i++) {
+        threadOrder = [...threadOrder, ...basePattern];
+    }
+    for(let i = 0; i < threadCount % basePattern.length; i++) {
+        threadOrder = [...threadOrder, basePattern[i]];
+    }
+    return threadOrder;
+}

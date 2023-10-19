@@ -4,6 +4,7 @@
 	import Warp from '../../../components/Weaving/CreateWizard/Warp.svelte';
 	import { stepsStore } from '../../../stores/generalStore';
 	import Weft from '../../../components/Weaving/CreateWizard/Weft.svelte';
+	import FullDesign from '../../../components/Weaving/CreateWizard/FullDesign.svelte';
     let wer = [
         { text: 'Shafts and Tie-up' },
         { text: 'Warp' },
@@ -33,5 +34,7 @@
         <Warp></Warp>
     {:else if currentStep == 3}
         <Weft></Weft>
+    {:else if currentStep == 4}
+        <FullDesign></FullDesign>
     {/if}
 </div>

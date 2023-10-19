@@ -3,7 +3,7 @@
 	import { RepeatColorPattern } from "$lib/weaving/helpers/weavingMaths";
 	import DropDown from "../Atoms/DropDown.svelte";
 
-    let colorPattern: ColorPattern = ColorPattern.Custom;
+    export let colorPattern: ColorPattern = ColorPattern.Custom;
     export let colorPalette: string[];
     export let colorOrder: string[];
     export let threadCount: number;
