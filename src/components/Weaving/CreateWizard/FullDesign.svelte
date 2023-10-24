@@ -5,7 +5,6 @@
 	import type { ColorPattern, TieUpTypes } from '$lib/weaving';
 	import TieUpRepresentation from '../../Molecules/TieUpRepresentation.svelte';
 	import DrawDown from '../../Organisms/DrawDown.svelte';
-	import { DetermineTieUpDraft } from '$lib/weaving/helpers/weavingMaths';
 	import Input from '../../Atoms/Input.svelte';
 	import Checkbox from '../../Atoms/Checkbox.svelte';
 
@@ -15,12 +14,10 @@
 	let treadleCount: number;
 	let tieUpPattern: TieUpTypes;
 	let warpThreadCount: number;
-	let warpColorPalette: string[] = ['#FFFFFF'];
-	let warpColorPattern: ColorPattern;
 	let warpColorOrder: string[];
 	let threadingPattern: number[];
 	let weftThreadCount: number;
-	let weftColorPalette: string[] = ['#FFFFFF'];
+	let weftColorPalette: string[];
 	let weftColorPattern: ColorPattern;
 	let weftColorOrder: string[];
 	let treadlingPattern: number[];
@@ -33,9 +30,7 @@
 		treadleCount = store.treadleCount;
 		tieUpPattern = store.tieUpPattern;
 		warpThreadCount = store.warpThreadCount;
-		warpColorPalette = store.warpColorPalette;
 		warpColorOrder = store.warpColorOrder;
-		warpColorPattern = store.warpColorPattern;
 		threadingPattern = store.threadingPattern;
 		weftThreadCount = store.weftThreadCount;
 		weftColorPalette = store.weftColorPalette;
@@ -60,7 +55,7 @@
 <Checkbox label="Share publicly" bind:inputValue={sharePublic} />
 
 <div class="graph-wrapper" style="grid-template-columns: {2.5*warpThreadCount}rem 1fr;">
-	<div class="graph-row">
+	<div>
 		<ThreadSideBar
 			threadTreadLabel={'threading'}
 			colorOrder={warpColorOrder}
@@ -69,10 +64,10 @@
 			verticalOrientation={true}
 		/>
 	</div>
-	<div class="tie-up-represenation-wrapper">
+	<div>
 		<TieUpRepresentation bind:shaftCount bind:treadleCount bind:tieUpPattern />
 	</div>
-	<div class="graph-row">
+	<div>
 		<DrawDown
 			{warpColorOrder}
 			threadPattern={threadingPattern}
@@ -97,8 +92,5 @@
 	.graph-wrapper {
 		display: grid;
 		
-	}
-
-	.graph-row {
 	}
 </style>
