@@ -1,9 +1,9 @@
 
 <script>
-    import { Label, Input } from 'flowbite-svelte';
+    import { Label, Checkbox } from 'flowbite-svelte';
 
     export let label = '';
-    export let inputValue = '';
+    export let inputValue = false;
 </script>
 
 <style>
@@ -13,6 +13,6 @@
 </style>
 
 <div class="mb-6 input-wrapper">
-    <Input type="text" bind:value={inputValue}></Input>
+    <Checkbox bind:checked={inputValue}></Checkbox>
     <Label for="input-group-1" class="block mb-2">{label}</Label>
 </div>

@@ -21,6 +21,7 @@
                 basePattern = [...basePattern, i];
             }
             threadingPattern = RepeatThreadOrder(threadCount, basePattern);
+        // TODO: add other patterns in
         } else if (threadTreadOrder === ThreadTreadOrder.Custom) {
             threadingPattern = [];
         }

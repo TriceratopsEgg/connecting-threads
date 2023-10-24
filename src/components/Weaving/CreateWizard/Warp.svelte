@@ -3,12 +3,12 @@
 	import { weavingPatternStore } from '../../../stores/weavingPatternStore';
 	import StepperButtons from '../../Molecules/StepperButtons.svelte';
 	import PaletteBuilder from '../../Molecules/PaletteBuilder.svelte';
-	import ThreadVisualizer from '../../Molecules/ThreadVisualizer.svelte';
-	import type { ColorPattern, ThreadTreadOrder } from '$lib/weaving';
+	import ColourVisualizer from '../../Molecules/ColourVisualizer.svelte';
 	import ThreadingTreadlingVizualizer from '../../Molecules/ThreadingTreadlingVizualizer.svelte';
+	import { ColorPattern, ThreadTreadOrder } from '$lib/weaving';
 
     let warpThreadCount: number;
-    let colorPalette: string[] = ["#FFFFFF"];
+    let colorPalette: string[];
     let colorPattern: ColorPattern;
     let colorOrder: string[];
     let threadOrder: ThreadTreadOrder;
@@ -25,6 +25,11 @@
         numberOfShafts = store.shaftCount;
     });
 
+    //TODO: clear defaults
+    colorPalette = ["#FFFFFF", "#000000"];
+    colorPattern = ColorPattern.TwoByTwo;
+    threadOrder = ThreadTreadOrder.StraightDrawForward;
+    
     function moveNextStep() {
         weavingPatternStore.update((store) => {
             store.warpThreadCount = warpThreadCount;
@@ -42,7 +47,7 @@
 <div class="">
     <NumericalInput labelValue="Amount of warp threads" bind:inputValue={warpThreadCount}></NumericalInput>
     <PaletteBuilder label="Warp Color Palette" bind:colorPalette={colorPalette}></PaletteBuilder>
-    <ThreadVisualizer threadCount={warpThreadCount} colorPalette={colorPalette} bind:colorOrder={colorOrder} bind:colorPattern={colorPattern}></ThreadVisualizer>
+    <ColourVisualizer threadCount={warpThreadCount} colorPalette={colorPalette} bind:colorOrder={colorOrder} bind:colorPattern={colorPattern}></ColourVisualizer>
     <ThreadingTreadlingVizualizer threadTreadLabel={"Threading"} shaftTreadCount={numberOfShafts} threadCount={warpThreadCount} bind:threadTreadOrder={threadOrder} bind:threadingPattern={threadingPattern} ></ThreadingTreadlingVizualizer>
     <StepperButtons on:move={moveNextStep} />
 </div>

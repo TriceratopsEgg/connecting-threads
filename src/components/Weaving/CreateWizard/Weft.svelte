@@ -3,12 +3,12 @@
 	import { weavingPatternStore } from '../../../stores/weavingPatternStore';
 	import StepperButtons from '../../Molecules/StepperButtons.svelte';
 	import PaletteBuilder from '../../Molecules/PaletteBuilder.svelte';
-	import ThreadVisualizer from '../../Molecules/ThreadVisualizer.svelte';
-	import type { ColorPattern, ThreadTreadOrder } from '$lib/weaving';
+	import ColourVisualizer from '../../Molecules/ColourVisualizer.svelte';
+	import { ColorPattern, ThreadTreadOrder } from '$lib/weaving';
 	import ThreadingTreadlingVizualizer from '../../Molecules/ThreadingTreadlingVizualizer.svelte';
 
     let weftThreadCount: number;
-    let colorPalette: string[] = ["#FFFFFF"];
+    let colorPalette: string[] = ["#FFFFFF", "#000000"];
     let colorPattern: ColorPattern;
     let colorOrder: string[];
     let treadleOrder: ThreadTreadOrder;
@@ -24,6 +24,11 @@
         treadlingPattern = store.treadlingPattern;
         numberOfTreadles = store.treadleCount;
     });
+
+    //TODO: clear defaults
+    colorPalette = ["#FFFFFF", "#000000"];
+    colorPattern = ColorPattern.TwoByTwo;
+    treadleOrder = ThreadTreadOrder.StraightDrawForward;
 
     function moveNextStep() {
         weavingPatternStore.update((store) => {
@@ -42,7 +47,7 @@
 <div class="">
     <NumericalInput labelValue="Amount of weft threads" bind:inputValue={weftThreadCount}></NumericalInput>
     <PaletteBuilder label="Weft Color Palette" bind:colorPalette={colorPalette}></PaletteBuilder>
-    <ThreadVisualizer threadCount={weftThreadCount} colorPalette={colorPalette} bind:colorOrder={colorOrder} bind:colorPattern={colorPattern}></ThreadVisualizer>
+    <ColourVisualizer threadCount={weftThreadCount} colorPalette={colorPalette} bind:colorOrder={colorOrder} bind:colorPattern={colorPattern}></ColourVisualizer>
     <ThreadingTreadlingVizualizer threadTreadLabel={"Treadling"} shaftTreadCount={numberOfTreadles} threadCount={weftThreadCount} bind:threadTreadOrder={treadleOrder} bind:threadingPattern={treadlingPattern} ></ThreadingTreadlingVizualizer>
     <StepperButtons on:move={moveNextStep} />
 </div>

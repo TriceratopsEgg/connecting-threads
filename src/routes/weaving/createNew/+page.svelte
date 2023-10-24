@@ -5,12 +5,6 @@
 	import { stepsStore } from '../../../stores/generalStore';
 	import Weft from '../../../components/Weaving/CreateWizard/Weft.svelte';
 	import FullDesign from '../../../components/Weaving/CreateWizard/FullDesign.svelte';
-    let wer = [
-        { text: 'Shafts and Tie-up' },
-        { text: 'Warp' },
-        { text: 'Weft' },
-        { text: 'Confirm' }
-    ];
     let steps = ['Shafts and Tie-up', 'Warp', 'Weft', 'Confirm'];
 
     let currentStep = 1;

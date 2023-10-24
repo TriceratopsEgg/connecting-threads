@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { DetermineTieUpDraft } from '$lib/weaving/helpers/weavingMaths';
 	import { TieUpTypes } from '../../lib/weaving';
 
     export let shaftCount: number;
@@ -8,27 +9,7 @@
 	let tieUpDraft: boolean[][] = [];
 
 	$: {
-		tieUpDraft = [];
-		if (tieUpPattern === TieUpTypes.Default || tieUpPattern === TieUpTypes.Alternative) {
-			let midPoint = shaftCount / 2;
-			for (let i = 0; i < shaftCount; i++) {
-				let tieUpRow: boolean[] = [];
-				for (let j = 0; j < treadleCount; j++) {
-					let comparison = shaftCount - i - midPoint;
-					if (j - comparison >= shaftCount) {
-						tieUpRow = [...tieUpRow, tieUpPattern === TieUpTypes.Default ? true : false];
-					} else {
-						tieUpRow = [
-							...tieUpRow,
-							tieUpPattern === TieUpTypes.Default
-								? !(j < comparison || j - comparison >= midPoint)
-								: j < comparison || j - comparison >= midPoint
-						];
-					}
-				}
-				tieUpDraft = [...tieUpDraft, tieUpRow];
-			}
-		}
+		tieUpDraft = DetermineTieUpDraft(tieUpPattern, shaftCount, treadleCount);
 	}
 </script>
 

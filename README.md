@@ -13,6 +13,7 @@ PUBLIC_messagingSenderId=
 PUBLIC_appId=
 PUBLIC_measurementId=
 ```
+The values for these settings can be found on the project settings page - scroll down to the authorised apps section.
 
 P.S. Currently authentication is not being enforced since this is still early days, so the above keys will only be ABSOLUTELY necessary if you want to check out the login and registering flows
 
