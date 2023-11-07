@@ -7,6 +7,9 @@
 	import DrawDown from '../../Organisms/DrawDown.svelte';
 	import Input from '../../Atoms/Input.svelte';
 	import Checkbox from '../../Atoms/Checkbox.svelte';
+	import { addWeavingPattern } from '$lib/firebase';
+    import { authUser } from '$lib/authStore';
+	import { FlattenTieUpDraftFromStore } from '$lib/weaving/helpers/weavingMaths';
 
 	let designName: string;
 	let sharePublic: boolean;
@@ -37,17 +40,17 @@
 		weftColorOrder = store.weftColorOrder;
 		weftColorPattern = store.weftColorPattern;
 		treadlingPattern = store.treadlingPattern;
-		tieUpDraft = store.tieUp;
+		tieUpDraft = FlattenTieUpDraftFromStore(store.tieUp);
 	});
 
 	function moveNextStep() {
-		// weavingPatternStore.update((store) => {
-		//     store.warpThreadCount = warpThreadCount;
-		//     store.warpColorPalette = colorPalette;
-		//     store.warpColorOrder = colorOrder;
-		//     return store;
-		// });
-		// save pattern
+		weavingPatternStore.update((store) => {
+            store.designName = designName;
+			store.sharePublic = sharePublic;
+			addWeavingPattern($authUser ? $authUser.uid : '', store);
+            return store;
+        });
+		
 	}
 </script>
 

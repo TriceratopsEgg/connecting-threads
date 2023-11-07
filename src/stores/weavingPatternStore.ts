@@ -1,13 +1,19 @@
 import { ColorPattern, ThreadTreadOrder, TieUpTypes } from "$lib/weaving";
 import { writable } from "svelte/store";
 
+export interface TieUp {
+    order: number,
+    tieUpPattern: boolean[]
+}
+
 export interface WeavingPatterStoreInterface {
     designName: string,
+    author: string | undefined,
     sharePublic: boolean,
     shaftCount: number,
     treadleCount: number,
     tieUpPattern: TieUpTypes,
-    tieUp: boolean[][],
+    tieUp: TieUp[],
     warpThreadCount: number,
     warpColorPattern: ColorPattern,
     warpColorPalette: string[],
@@ -24,6 +30,7 @@ export interface WeavingPatterStoreInterface {
 
 export const weavingPatternStore = writable<WeavingPatterStoreInterface>({
     designName: '',
+    author: undefined,
     sharePublic: false,
     shaftCount: 4,
     treadleCount: 4,

@@ -5,7 +5,8 @@
 	import TieUpRepresentation from '../../Molecules/TieUpRepresentation.svelte';
 	import { TieUpTypes } from '../../../lib/weaving';
 	import StepperButtons from '../../Molecules/StepperButtons.svelte';
-	import { DetermineTieUpDraft } from '$lib/weaving/helpers/weavingMaths';
+	import { DetermineTieUpDraftForStore } from '$lib/weaving/helpers/weavingMaths';
+    import { authUser } from '$lib/authStore';
 
     let shaftCount: number;
     let treadleCount: number;
@@ -19,10 +20,11 @@
 
 	function moveNextStep() {
 		weavingPatternStore.update((store) => {
+			store.author = $authUser?.uid;
 			store.shaftCount = shaftCount;
 			store.treadleCount = treadleCount;
 			store.tieUpPattern = tieUpPattern;
-			store.tieUp = DetermineTieUpDraft(tieUpPattern, shaftCount, treadleCount);
+			store.tieUp = DetermineTieUpDraftForStore(tieUpPattern, shaftCount, treadleCount);
 			return store;
 		});
 	}

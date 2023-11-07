@@ -1,3 +1,4 @@
+import type { TieUp } from "../../../stores/weavingPatternStore";
 import { TieUpTypes } from "../enums/terminology";
 
 export function RepeatColorPattern(
@@ -55,5 +56,27 @@ export function DetermineTieUpDraft(
 				tieUpDraft = [...tieUpDraft, tieUpRow];
 			}
 		}
+    return tieUpDraft;
+}
+
+export function DetermineTieUpDraftForStore(
+    tieUpPattern: TieUpTypes,
+    shaftCount: number,
+    treadleCount: number,
+): TieUp[]
+{
+    let tieUpDraft = DetermineTieUpDraft(tieUpPattern, shaftCount, treadleCount);
+    let tieUpDraftForStore: TieUp[] = tieUpDraft.map((value, index) => ({ order: index, tieUpPattern: value }));
+    return tieUpDraftForStore;
+}
+
+export function FlattenTieUpDraftFromStore(
+    TieUpFromStore: TieUp[]
+): boolean[][]
+{
+    let tieUpDraft: boolean[][] = [];
+    TieUpFromStore.forEach(tieUp => {
+        tieUpDraft = [...tieUpDraft, tieUp.tieUpPattern];
+    });
     return tieUpDraft;
 }
