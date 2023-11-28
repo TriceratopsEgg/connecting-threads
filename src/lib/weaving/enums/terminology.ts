@@ -16,6 +16,5 @@ export enum ThreadTreadOrder {
     PointTwill = 'Point Twill',
     M = "M",
     W = 'W',
-    Rosepath = 'Rosepath',
     Custom = 'Custom',
 }

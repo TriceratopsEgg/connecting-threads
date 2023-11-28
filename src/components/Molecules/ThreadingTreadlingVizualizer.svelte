@@ -22,6 +22,43 @@
             }
             threadingPattern = RepeatThreadOrder(threadCount, basePattern);
         // TODO: add other patterns in
+        } else if (threadTreadOrder === ThreadTreadOrder.PointTwill) {
+            for (let i = 1; i <= (shaftTreadCount * 2) - 2; i++) {
+                if (i <= shaftTreadCount) {
+                    basePattern = [...basePattern, i];
+                } else {
+                    basePattern = [...basePattern, shaftTreadCount - (i - shaftTreadCount)];
+                }
+            }
+            threadingPattern = RepeatThreadOrder(threadCount, basePattern);
+        } else if (threadTreadOrder === ThreadTreadOrder.M) {
+            for (let i = 1; i <= (shaftTreadCount * 2) - (shaftTreadCount / 2); i++) {
+                if (i <= shaftTreadCount) {
+                    basePattern = [...basePattern, i];
+                } else {
+                    basePattern = [...basePattern, shaftTreadCount - (i - shaftTreadCount)];
+                }
+            }
+            let reverse = [...basePattern];
+            reverse.shift();
+            reverse.pop();
+            basePattern = basePattern.concat(reverse.reverse());
+            threadingPattern = RepeatThreadOrder(threadCount, basePattern);
+        } else if (threadTreadOrder === ThreadTreadOrder.W) {
+            for (let i = (shaftTreadCount * 2) - (shaftTreadCount / 2); i > 0 ; i--) {
+                if (i <= shaftTreadCount) {
+                    basePattern = [...basePattern, i];
+                } else {
+                    basePattern = [...basePattern, shaftTreadCount - (i - shaftTreadCount)];
+                }
+            }
+            basePattern = basePattern.slice(shaftTreadCount / 2, basePattern.length).concat(basePattern.slice(0, shaftTreadCount / 2));
+                console.log(basePattern);
+            let reverse = [...basePattern];
+            reverse.shift();
+            reverse.pop();
+            basePattern = basePattern.concat(reverse.reverse());
+            threadingPattern = RepeatThreadOrder(threadCount, basePattern);
         } else if (threadTreadOrder === ThreadTreadOrder.Custom) {
             threadingPattern = [];
         }

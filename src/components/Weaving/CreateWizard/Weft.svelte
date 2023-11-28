@@ -26,7 +26,7 @@
     });
 
     //TODO: clear defaults
-    colorPalette = ["#FFFFFF", "#000000"];
+    colorPalette = ["#5D5D5D"];
     colorPattern = ColorPattern.TwoByTwo;
     treadleOrder = ThreadTreadOrder.StraightDrawForward;
 

@@ -12,7 +12,7 @@ export function RepeatColorPattern(
     for(let i = 0; i < threadCount % basePattern.length; i++) {
         colorOrder = [...colorOrder, basePattern[i]];
     }
-    return colorOrder;
+    return colorOrder.slice(0, threadCount);
 }
 
 export function RepeatThreadOrder(
@@ -26,7 +26,7 @@ export function RepeatThreadOrder(
     for(let i = 0; i < threadCount % basePattern.length; i++) {
         threadOrder = [...threadOrder, basePattern[i]];
     }
-    return threadOrder;
+    return threadOrder.slice(0, threadCount);
 }
 
 export function DetermineTieUpDraft(
